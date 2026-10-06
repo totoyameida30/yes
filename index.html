@@ -1,0 +1,63 @@
+<?php
+session_start();
+
+if (isset($_SESSION["user_id"])) {
+    header("Location: dashboard.php");
+    exit();
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NFC School System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="home-container">
+
+    <div class="home-card">
+
+        <div class="logo">
+            📡
+        </div>
+
+        <h1>NFC School System</h1>
+
+        <p class="subtitle">
+            Student & Teacher Identification System
+        </p>
+
+        <div class="home-buttons">
+
+            <a href="login.php" class="btn primary">
+                Login
+            </a>
+
+            <a href="register.php" class="btn secondary">
+                Register
+            </a>
+
+        </div>
+
+        <div class="info-box">
+            <strong>NFC Enabled</strong>
+            <p>
+                Register your account and connect your NFC card
+                for easier identification.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

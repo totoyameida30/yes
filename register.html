@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NFC School System - Registration</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                linear-gradient(rgba(0, 20, 45, .90), rgba(0, 20, 45, .95)),
+                linear-gradient(135deg, #001f3f, #004080);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 30px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+
+            background: rgba(255,255,255,.08);
+
+            border: 1px solid rgba(255,255,255,.2);
+
+            border-radius: 25px;
+
+            overflow: hidden;
+
+            box-shadow: 0 25px 70px rgba(0,0,0,.45);
+
+            backdrop-filter: blur(15px);
+        }
+
+        .left {
+            padding: 50px 35px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    rgba(0,31,63,.8),
+                    rgba(0,64,128,.8)
+                );
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+
+            border-radius: 20px;
+
+            background: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 38px;
+
+            margin-bottom: 25px;
+        }
+
+        .left h1 {
+            color: white;
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .left p {
+            color: #d7e9ff;
+            line-height: 1.7;
+        }
+
+        .features {
+            margin-top: 30px;
+        }
+
+        .feature {
+            color: white;
+            margin: 15px 0;
+            font-size: 15px;
+        }
+
+        .feature span {
+            display: inline-flex;
+
+            width: 30px;
+            height: 30px;
+
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(255,255,255,.15);
+
+            border-radius: 50%;
+
+            margin-right: 10px;
+        }
+
+        .right {
+            background: white;
+
+            padding: 45px;
+        }
+
+        .right h2 {
+            color: #002147;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #777;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+
+            font-weight: bold;
+
+            color: #333;
+
+            margin-bottom: 7px;
+
+            font-size: 14px;
+        }
+
+        input,
+        select {
+            width: 100%;
+
+            padding: 13px 15px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 10px;
+
+            outline: none;
+
+            font-size: 14px;
+
+            transition: .3s;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #0066cc;
+
+            box-shadow: 0 0 0 3px rgba(0,102,204,.1);
+        }
+
+        .row {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 15px;
+        }
+
+        .role-container {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 12px;
+
+            margin-top: 8px;
+        }
+
+        .role-option input {
+            display: none;
+        }
+
+        .role-card {
+            display: block;
+
+            border: 2px solid #ddd;
+
+            padding: 18px;
+
+            text-align: center;
+
+            border-radius: 12px;
+
+            cursor: pointer;
+
+            transition: .3s;
+        }
+
+        .role-card .icon {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .role-card strong {
+            display: block;
+            color: #333;
+        }
+
+        .role-card small {
+            color: #777;
+        }
+
+        .role-option input:checked + .role-card {
+            border-color: #0066cc;
+
+            background: #eef7ff;
+
+            box-shadow: 0 5px 15px rgba(0,102,204,.15);
+        }
+
+        .register-btn {
+            width: 100%;
+
+            padding: 14px;
+
+            margin-top: 10px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: linear-gradient(
+                135deg,
+                #002147,
+                #0066cc
+            );
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: .3s;
+        }
+
+        .register-btn:hover {
+            transform: translateY(-2px);
+
+            box-shadow: 0 10px 25px rgba(0,70,140,.3);
+        }
+
+        .login-link {
+            text-align: center;
+
+            margin-top: 20px;
+
+            font-size: 14px;
+
+            color: #777;
+        }
+
+        .login-link a {
+            color: #0066cc;
+
+            font-weight: bold;
+
+            text-decoration: none;
+        }
+
+        @media(max-width: 750px) {
+
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .left {
+                display: none;
+            }
+
+            .right {
+                padding: 30px 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="left">
+
+        <div class="logo">
+            📡
+        </div>
+
+        <h1>NFC School Portal</h1>
+
+        <p>
+            Create your school account and connect your
+            NFC card for fast and convenient identification.
+        </p>
+
+        <div class="features">
+
+            <div class="feature">
+                <span>✓</span>
+                NFC-based identification
+            </div>
+
+            <div class="feature">
+                <span>✓</span>
+                Student & Teacher accounts
+            </div>
+
+            <div class="feature">
+                <span>✓</span>
+                Secure account management
+            </div>
+
+            <div class="feature">
+                <span>✓</span>
+                Centralized school records
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="right">
+
+        <h2>Create Account</h2>
+
+        <p class="subtitle">
+            Register your Student or Teacher account
+        </p>
+
+        <form action="register_process.php" method="POST">
+
+            <div class="form-group">
+
+                <label>Full Name</label>
+
+                <input
+                    type="text"
+                    name="full_name"
+                    placeholder="Enter full name"
+                    required
+                >
+
+            </div>
+
+
+            <div class="row">
+
+                <div class="form-group">
+
+                    <label>Username</label>
+
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="Username"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>School ID</label>
+
+                    <input
+                        type="text"
+                        name="school_id"
+                        placeholder="Student/Teacher ID"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter email address"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Role</label>
+
+                <div class="role-container">
+
+                    <label class="role-option">
+
+                        <input
+                            type="radio"
+                            name="role"
+                            value="STUDENT"
+                            required
+                        >
+
+                        <div class="role-card">
+
+                            <div class="icon">🎓</div>
+
+                            <strong>Student</strong>
+
+                            <small>Student Account</small>
+
+                        </div>
+
+                    </label>
+
+
+                    <label class="role-option">
+
+                        <input
+                            type="radio"
+                            name="role"
+                            value="TEACHER"
+                        >
+
+                        <div class="role-card">
+
+                            <div class="icon">👨‍🏫</div>
+
+                            <strong>Teacher</strong>
+
+                            <small>Teacher Account</small>
+
+                        </div>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <div class="row">
+
+                <div class="form-group">
+
+                    <label>Course</label>
+
+                    <input
+                        type="text"
+                        name="course"
+                        placeholder="e.g. BSIT"
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Section</label>
+
+                    <input
+                        type="text"
+                        name="section"
+                        placeholder="e.g. BSIT-3B"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="row">
+
+                <div class="form-group">
+
+                    <label>Password</label>
+
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Create password"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Confirm Password</label>
+
+                    <input
+                        type="password"
+                        name="confirm_password"
+                        placeholder="Confirm password"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="register-btn"
+            >
+                Create Account
+            </button>
+
+        </form>
+
+
+        <div class="login-link">
+
+            Already have an account?
+
+            <a href="login.php">
+                Login
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
